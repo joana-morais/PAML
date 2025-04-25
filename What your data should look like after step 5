@@ -1,0 +1,17 @@
+# What your data should look like after step 5
+
+(base) [joanamorais@login DNA_CDS_separated_fasta_one_line]$ ls
+HOXA10.fasta  HOXA1.fasta  HOXA4.fasta  HOXA7.fasta   HOXB1.fasta  HOXB4.fasta  HOXB9.fasta   HOXC13.fasta  HOXC6.fasta  HOXD10.fasta  HOXD13.fasta  HOXD4.fasta
+HOXA11.fasta  HOXA2.fasta  HOXA5.fasta  HOXA9.fasta   HOXB2.fasta  HOXB6.fasta  HOXC10.fasta  HOXC4.fasta   HOXC8.fasta  HOXD11.fasta  HOXD1.fasta   HOXD9.fasta
+HOXA13.fasta  HOXA3.fasta  HOXA6.fasta  HOXB13.fasta  HOXB3.fasta  HOXB7.fasta  HOXC12.fasta  HOXC5.fasta   HOXC9.fasta  HOXD12.fasta  HOXD3.fasta
+
+
+
+>HOXB1_CalSin
+ATGAACTTCTTC (...)
+>HOXB1_TretOri
+ATGAACTTCTTCT (...)
+>HOXB1_SalMer
+ATGCTCTTGAAAT (...)
+
+HOXB1.fasta (END)
