@@ -1,0 +1,43 @@
+import os
+import re
+
+input_dir = "/scratch/joanamorais/jobs/03_Hox/analysis/HOX/Selection_analysis/PAML/03_Phylip_files/01_working_dir"
+output_dir = os.path.join(input_dir, "no_name_in_sequence")
+
+# Create output directory if it doesn't exist
+os.makedirs(output_dir, exist_ok=True)
+
+def process_sequence_file(filename):
+    input_path = os.path.join(input_dir, filename)
+    output_path = os.path.join(output_dir, filename)
+
+    with open(input_path, 'r') as infile, open(output_path, 'w') as outfile:
+        # Read the first line (number of sequences and length) and write it exactly the same
+        first_line = infile.readline().strip()
+        outfile.write(first_line + "\n")
+
+        # Process each subsequent line
+        for line in infile:
+            # Check if the line starts with HOX prefix
+            if re.match(r'^HOX\w+_', line.strip()):
+                # Split the line to remove the HOX prefix
+                parts = line.strip().split()
+                # Remove the HOXD4_ prefix from the first part
+                new_first_part = re.sub(r'^HOX\w+_', '', parts[0])
+                # Reconstruct the line with the new first part
+                new_line = f"{new_first_part} {' '.join(parts[1:])}"
+                outfile.write(new_line + "\n")
+            else:
+                # Write other lines as-is
+                outfile.write(line)
+
+    print(f"Processed {filename}")
+
+# Process all .phy files in the input directory
+processed_count = 0
+for filename in os.listdir(input_dir):
+    if filename.endswith('.phy'):
+        process_sequence_file(filename)
+        processed_count += 1
+
+print(f"Processing complete. {processed_count} .phy files processed.")
